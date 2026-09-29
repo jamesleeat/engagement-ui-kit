@@ -141,7 +141,9 @@ export class Select<T, V = T> implements ControlValueAccessor {
       const id = this.activeDescendant();
       if (id) {
         // `scrollIntoView` is absent in some DOM implementations (e.g. jsdom).
-        this.listbox().nativeElement.querySelector(`#${id}`)?.scrollIntoView?.({ block: 'nearest' });
+        this.listbox()
+          .nativeElement.querySelector(`#${id}`)
+          ?.scrollIntoView?.({ block: 'nearest' });
       }
     });
   }

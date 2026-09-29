@@ -7,15 +7,15 @@
 The status is now one value instead of three booleans that could contradict each other, and
 the label is now announced to assistive technology (it was previously `aria-hidden`).
 
-| 1.x                                             | 2.0                                |
-| ----------------------------------------------- | ---------------------------------- |
-| `[isReady]="true"`                              | `tone="success"`                   |
-| `[isProcessing]="true"`                         | `tone="warning"`                   |
-| `[isError]="true"`                              | `tone="danger"`                    |
-| no flag set                                     | `tone="neutral"` (the default)     |
-| `[isSmall]="true"` / `[isLarge]="true"`         | `size="sm"` / `size="lg"`          |
-| `label` optional, defaulted to `''`             | `label` **required**               |
-| `tooltip`                                       | unchanged, now **deprecated**      |
+| 1.x                                     | 2.0                            |
+| --------------------------------------- | ------------------------------ |
+| `[isReady]="true"`                      | `tone="success"`               |
+| `[isProcessing]="true"`                 | `tone="warning"`               |
+| `[isError]="true"`                      | `tone="danger"`                |
+| no flag set                             | `tone="neutral"` (the default) |
+| `[isSmall]="true"` / `[isLarge]="true"` | `size="sm"` / `size="lg"`      |
+| `label` optional, defaulted to `''`     | `label` **required**           |
+| `tooltip`                               | unchanged, now **deprecated**  |
 
 What consumers must check, beyond the mechanical rename:
 

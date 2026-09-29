@@ -125,7 +125,9 @@ describe('Select', () => {
       await press('ArrowDown'); // moves to Mateo
 
       expect(activeOption()?.textContent).toContain('Mateo');
-      const selected = Array.from(document.querySelectorAll('[role="option"][aria-selected="true"]'));
+      const selected = Array.from(
+        document.querySelectorAll('[role="option"][aria-selected="true"]'),
+      );
       expect(selected.map((o) => o.textContent?.trim())).toEqual(['✓Aidan']);
     });
 

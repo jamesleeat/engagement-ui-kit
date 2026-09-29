@@ -1,4 +1,52 @@
-# Engagement UI Kit — Starter Project
+# Engagement UI Kit
+
+> **Reviewing this submission?** Start with [DECISIONS.md](DECISIONS.md),
+> [ADOPTION.md](ADOPTION.md) and [SUBMISSION.md](SUBMISSION.md). The breaking change is in
+> [CHANGELOG.md](CHANGELOG.md). `npm start` opens the workbench, which has a **Dark theme**
+> toggle in its header.
+
+## What the kit provides
+
+| Import from `src/lib/public-api.ts` | What it is                                                                  |
+| ----------------------------------- | --------------------------------------------------------------------------- |
+| `Select` (`<cw-select>`)            | Single-select combobox. Integrates with reactive and template-driven forms. |
+| `StatusBadge` (`<cw-status-badge>`) | Short status label. `tone`, `size`, required `label`.                       |
+
+```ts
+// In the consuming component
+reviewerName = (r: ReviewerOption) => r.name;
+reviewerKey = (r: ReviewerOption) => r.id;
+isUnavailable = (r: ReviewerOption) => r.unavailable === true;
+```
+
+```html
+<cw-select
+  label="Reviewer"
+  [options]="reviewers"
+  [optionLabel]="reviewerName"
+  [optionValue]="reviewerKey"
+  [optionDisabled]="isUnavailable"
+  [formControl]="reviewerId"
+/>
+
+<!-- A plain string list needs no accessors -->
+<cw-select label="Change group" [options]="changeGroups" [(ngModel)]="changeGroup" />
+
+<cw-status-badge tone="success" label="Ready" />
+```
+
+**Keyboard (`cw-select`):** ↓ / ↑ / Enter / Space open. While open: ↑ ↓ Home End PageUp
+PageDown move; typing jumps to a match; Enter, Space or Alt+↑ choose; Escape closes without
+changing the value; Tab closes and moves on.
+
+**Theming:** set `data-cw-theme="dark"` on `<html>`, or on any element to theme only that
+subtree. Kit components read only semantic tokens (`src/lib/tokens/_semantic.scss`); a theme is
+a file in `src/lib/tokens/themes/` that re-declares the colour roles. Windows High Contrast
+(forced colours) is mapped in `_forced-colors.scss`.
+
+---
+
+_The original starter README follows._
 
 An Angular starter for the design system exercise: a small UI kit, the token layer it is built
 on, one supplied component, and a workbench application that consumes the kit. Your exercise
