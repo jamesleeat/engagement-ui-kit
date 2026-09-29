@@ -104,8 +104,9 @@
   padding: var(--cw-control-padding-block) var(--cw-control-padding-inline);
 }
 
-/* The outline, not only the background, marks the active option: forced-colours
-   mode strips backgrounds, and an outline also survives low-contrast screens. */
+/* The outline, not only the background, marks the active option: in forced
+   colours the active background is plain Canvas, and an outline also survives
+   low-contrast screens. */
 .cw-select-option--active {
   background: var(--cw-color-bg-active);
   outline: var(--cw-focus-ring-width) solid var(--cw-color-focus-ring);

@@ -238,8 +238,13 @@ export class Select<T, V = T> implements ControlValueAccessor {
     }
     if (isPrintableKey(event)) {
       event.preventDefault();
-      this.open();
+      // Search from the current value, so that with no value the first match
+      // wins rather than the one after the default active option.
+      this.open(this.selectedIndex());
       this.typeahead(event.key);
+      if (this.activeIndex() < 0) {
+        this.open();
+      }
     }
   }
 

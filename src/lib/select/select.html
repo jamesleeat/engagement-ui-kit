@@ -6,7 +6,7 @@
   class="cw-select-trigger"
   role="combobox"
   aria-haspopup="listbox"
-  [attr.tabindex]="disabled() ? -1 : 0"
+  [attr.tabindex]="disabled() ? null : 0"
   [attr.aria-labelledby]="labelId"
   [attr.aria-controls]="listboxId"
   [attr.aria-expanded]="isOpen()"

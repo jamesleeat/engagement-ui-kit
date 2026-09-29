@@ -3,9 +3,13 @@
  *
  * In forced-colours mode the browser replaces authored colours with the user's
  * system palette. Mapping the semantic roles to CSS system colours keeps the
- * *meaning* of each role intact whichever kit theme is active. Components then
- * only have to make sure no state is carried by background colour alone, which
- * the browser strips. That is a component concern and is handled there.
+ * *meaning* of each role intact whichever kit theme is active.
+ *
+ * Only system colours that are designed as pairs may meet: text roles are
+ * `CanvasText` / `GrayText`, so every background role is `Canvas`. State is
+ * carried by outlines and borders (`Highlight`), never by a background, which
+ * would otherwise put `CanvasText` on `Highlight` — an unpaired, and often
+ * unreadable, combination.
  */
 
 @media (forced-colors: active) {
@@ -14,7 +18,7 @@
     --cw-color-bg-canvas: Canvas;
     --cw-color-bg-surface: Canvas;
     --cw-color-bg-subtle: Canvas;
-    --cw-color-bg-active: Highlight;
+    --cw-color-bg-active: Canvas; /* the active option's outline marks it */
 
     --cw-color-text-default: CanvasText;
     --cw-color-text-muted: CanvasText;
