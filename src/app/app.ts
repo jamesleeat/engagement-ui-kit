@@ -1,8 +1,11 @@
-import { Component } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { Component, effect, inject, signal } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
 import { StatusBadge } from '../lib/public-api';
 import { CHANGE_GROUPS, ENGAGEMENTS, REVIEWERS } from './data/engagement-fixtures';
+
+type WorkbenchTheme = 'light' | 'dark';
 
 /**
  * The workbench: a consumer of the kit in `src/lib`.
@@ -23,4 +26,17 @@ export class App {
 
   /** A form control for the reviewer filter, ready for a form-integrated control. */
   protected readonly reviewerId = new FormControl<string | null>(null);
+
+  protected readonly theme = signal<WorkbenchTheme>('light');
+
+  constructor() {
+    // The kit's theming contract is one attribute; putting it on <html> themes
+    // the whole document, including anything rendered outside this component.
+    const root = inject(DOCUMENT).documentElement;
+    effect(() => root.setAttribute('data-cw-theme', this.theme()));
+  }
+
+  protected toggleTheme(): void {
+    this.theme.update((theme) => (theme === 'light' ? 'dark' : 'light'));
+  }
 }

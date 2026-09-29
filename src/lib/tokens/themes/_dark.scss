@@ -1,0 +1,52 @@
+/**
+ * Dark theme.
+ *
+ * A theme is only a re-declaration of the semantic colour roles, pointing them
+ * at different primitives. It never names a component. Every colour role in
+ * `_semantic.scss` must be re-declared here so that nothing leaks through from
+ * an enclosing light theme.
+ *
+ * Apply it with `data-cw-theme="dark"` on `<html>` or on any subtree.
+ * Contrast notes are against `--cw-color-bg-surface` (gray-800).
+ */
+
+[data-cw-theme='dark'] {
+  color-scheme: dark;
+
+  /* Backgrounds */
+  --cw-color-bg-canvas: var(--cw-gray-900);
+  --cw-color-bg-surface: var(--cw-gray-800);
+  --cw-color-bg-subtle: var(--cw-gray-700);
+  --cw-color-bg-active: var(--cw-blue-800);
+
+  /* Text */
+  --cw-color-text-default: var(--cw-gray-50); /* 12:1 */
+  --cw-color-text-muted: var(--cw-gray-300); /* 7.5:1 */
+  --cw-color-text-disabled: var(--cw-gray-400); /* 5.2:1 */
+  --cw-color-text-accent: var(--cw-blue-200); /* 7.6:1 */
+
+  /* Borders */
+  --cw-color-border-subtle: var(--cw-gray-800);
+  --cw-color-border-default: var(--cw-gray-700);
+  --cw-color-border-control: var(--cw-gray-400); /* 5.2:1 */
+  --cw-color-border-control-hover: var(--cw-gray-200);
+
+  /* Focus and selection */
+  --cw-color-focus-ring: var(--cw-blue-200);
+  --cw-color-selected-indicator: var(--cw-blue-200);
+
+  /* Status */
+  --cw-color-status-success-bg: var(--cw-green-800);
+  --cw-color-status-success-fg: var(--cw-green-50);
+  --cw-color-status-success-border: var(--cw-green-100);
+  --cw-color-status-warning-bg: var(--cw-amber-800);
+  --cw-color-status-warning-fg: var(--cw-amber-50);
+  --cw-color-status-warning-border: var(--cw-amber-100);
+  --cw-color-status-danger-bg: var(--cw-red-800);
+  --cw-color-status-danger-fg: var(--cw-red-50);
+  --cw-color-status-danger-border: var(--cw-red-100);
+
+  /* Elevation: shadows barely read on dark surfaces; overlays rely on their
+     border instead, so the shadow is kept but not load-bearing. */
+  --cw-shadow-overlay: var(--cw-shadow-md);
+}

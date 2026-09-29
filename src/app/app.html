@@ -1,8 +1,19 @@
 <header class="wb-header">
-  <h1>Engagement UI kit — workbench</h1>
-  <p class="wb-lede">
-    A consumer of the kit in <code>src/lib</code>. Build, demonstrate and review components here.
-  </p>
+  <div>
+    <h1>Engagement UI kit — workbench</h1>
+    <p class="wb-lede">
+      A consumer of the kit in <code>src/lib</code>. Build, demonstrate and review components here.
+    </p>
+  </div>
+
+  <button
+    type="button"
+    class="wb-theme-toggle"
+    [attr.aria-pressed]="theme() === 'dark'"
+    (click)="toggleTheme()"
+  >
+    Dark theme
+  </button>
 </header>
 
 <main class="wb-main">

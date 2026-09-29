@@ -1,6 +1,12 @@
 /**
  * The kit's style entry point. Imported once, globally, from `src/styles.scss`.
+ *
+ * Order matters only for equal-specificity selectors: themes come after the
+ * default so `[data-cw-theme]` wins where both match, and forced colours come
+ * last so they win over any kit theme.
  */
 
 @use 'primitives';
 @use 'semantic';
+@use 'themes/dark';
+@use 'forced-colors';

@@ -1,10 +1,91 @@
 /**
  * Semantic tokens: what the primitives are *for*.
  *
- * This layer is yours. It is the seam between the raw palette in
- * `_primitives.scss` and the components that consume it, and it is what makes
- * a second theme possible without touching component styles.
+ * Kit components consume these and nothing below them. A token here names a
+ * role (`--cw-color-text-muted`), never a hue or a step on a scale, so a theme
+ * can re-point the role without any component knowing.
  *
- * Nothing here is prescribed: the roles you define, how you name them, and how
- * a theme overrides them are part of what the exercise is asking you to design.
+ * Two kinds of token live here:
+ *
+ * - Theme-invariant roles (type, shape, control metrics), declared once on
+ *   `:root`. A theme may override them but is not expected to.
+ * - Colour roles, declared here for the default (light) theme. Every theme
+ *   re-declares the full colour set under its own `[data-cw-theme]` selector
+ *   (see `themes/`). They are custom properties, so a theme applies to whatever
+ *   subtree carries the attribute, not only to the whole document.
+ *
+ * Contrast notes are against `--cw-color-bg-surface`. Text roles meet WCAG AA
+ * 4.5:1. `border-control` and `focus-ring` meet the 3:1 non-text minimum
+ * (WCAG 1.4.11) because they are the only visible boundary of a control.
  */
+
+:root {
+  /* Type */
+  --cw-font-family-base: var(--cw-font-sans);
+  --cw-font-size-body: var(--cw-font-size-md);
+  --cw-font-size-caption: var(--cw-font-size-sm);
+  --cw-line-height-body: var(--cw-line-height-normal);
+  --cw-font-weight-emphasis: var(--cw-font-weight-semibold);
+
+  /* Shape */
+  --cw-radius-control: var(--cw-radius-md);
+  --cw-radius-overlay: var(--cw-radius-md);
+  --cw-radius-badge: var(--cw-radius-pill);
+
+  /* Form controls */
+  --cw-control-padding-block: var(--cw-space-2);
+  --cw-control-padding-inline: var(--cw-space-3);
+  --cw-control-gap: var(--cw-space-2);
+  --cw-control-label-gap: var(--cw-space-1);
+
+  /* Overlays (popups, listboxes) */
+  --cw-overlay-max-height: 18rem;
+  --cw-overlay-offset: var(--cw-space-1);
+
+  /* Focus */
+  --cw-focus-ring-width: 2px;
+  --cw-focus-ring-offset: 2px;
+}
+
+/* The default theme. Also matched by `[data-cw-theme='light']` so a light
+   region can sit inside a dark page. */
+:root,
+[data-cw-theme='light'] {
+  color-scheme: light;
+
+  /* Backgrounds */
+  --cw-color-bg-canvas: var(--cw-gray-0); /* the page */
+  --cw-color-bg-surface: var(--cw-gray-0); /* controls, cards, popups */
+  --cw-color-bg-subtle: var(--cw-gray-50); /* inset areas, disabled controls */
+  --cw-color-bg-active: var(--cw-blue-50); /* the keyboard-active option */
+
+  /* Text */
+  --cw-color-text-default: var(--cw-gray-900); /* 16.6:1 */
+  --cw-color-text-muted: var(--cw-gray-600); /* 6.4:1 */
+  --cw-color-text-disabled: var(--cw-gray-500); /* 4.4:1: exempt, but kept legible */
+  --cw-color-text-accent: var(--cw-blue-600); /* 6.6:1 */
+
+  /* Borders */
+  --cw-color-border-subtle: var(--cw-gray-100); /* decorative dividers only */
+  --cw-color-border-default: var(--cw-gray-200); /* cards, containers */
+  --cw-color-border-control: var(--cw-gray-500); /* 4.4:1: a control's boundary */
+  --cw-color-border-control-hover: var(--cw-gray-700);
+
+  /* Focus and selection */
+  --cw-color-focus-ring: var(--cw-blue-600);
+  --cw-color-selected-indicator: var(--cw-blue-600);
+
+  /* Status: one set per meaning, not per colour */
+  --cw-color-status-success-bg: var(--cw-green-50);
+  --cw-color-status-success-fg: var(--cw-green-800);
+  --cw-color-status-success-border: var(--cw-green-600);
+  --cw-color-status-warning-bg: var(--cw-amber-50);
+  --cw-color-status-warning-fg: var(--cw-amber-800);
+  --cw-color-status-warning-border: var(--cw-amber-600);
+  --cw-color-status-danger-bg: var(--cw-red-50);
+  --cw-color-status-danger-fg: var(--cw-red-800);
+  --cw-color-status-danger-border: var(--cw-red-600);
+
+  /* Elevation */
+  --cw-shadow-overlay: var(--cw-shadow-md);
+}

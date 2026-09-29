@@ -15,9 +15,10 @@
 }
 
 body {
-  color: var(--cw-gray-900);
-  font-family: var(--cw-font-sans);
-  line-height: var(--cw-line-height-normal);
+  background: var(--cw-color-bg-canvas);
+  color: var(--cw-color-text-default);
+  font-family: var(--cw-font-family-base);
+  line-height: var(--cw-line-height-body);
   margin: 0;
 }
 
@@ -33,7 +34,7 @@ p {
 }
 
 code {
-  background: var(--cw-gray-50);
+  background: var(--cw-color-bg-subtle);
   border-radius: var(--cw-radius-sm);
   font-size: 0.875em;
   padding: 0.1em 0.3em;

@@ -1,0 +1,44 @@
+/**
+ * Forced colours (e.g. Windows High Contrast).
+ *
+ * In forced-colours mode the browser replaces authored colours with the user's
+ * system palette. Mapping the semantic roles to CSS system colours keeps the
+ * *meaning* of each role intact whichever kit theme is active. Components then
+ * only have to make sure no state is carried by background colour alone, which
+ * the browser strips. That is a component concern and is handled there.
+ */
+
+@media (forced-colors: active) {
+  :root,
+  [data-cw-theme] {
+    --cw-color-bg-canvas: Canvas;
+    --cw-color-bg-surface: Canvas;
+    --cw-color-bg-subtle: Canvas;
+    --cw-color-bg-active: Highlight;
+
+    --cw-color-text-default: CanvasText;
+    --cw-color-text-muted: CanvasText;
+    --cw-color-text-disabled: GrayText;
+    --cw-color-text-accent: LinkText;
+
+    --cw-color-border-subtle: CanvasText;
+    --cw-color-border-default: CanvasText;
+    --cw-color-border-control: ButtonBorder;
+    --cw-color-border-control-hover: Highlight;
+
+    --cw-color-focus-ring: Highlight;
+    --cw-color-selected-indicator: CanvasText;
+
+    --cw-color-status-success-bg: Canvas;
+    --cw-color-status-success-fg: CanvasText;
+    --cw-color-status-success-border: CanvasText;
+    --cw-color-status-warning-bg: Canvas;
+    --cw-color-status-warning-fg: CanvasText;
+    --cw-color-status-warning-border: CanvasText;
+    --cw-color-status-danger-bg: Canvas;
+    --cw-color-status-danger-fg: CanvasText;
+    --cw-color-status-danger-border: CanvasText;
+
+    --cw-shadow-overlay: none;
+  }
+}
