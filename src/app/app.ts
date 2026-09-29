@@ -1,9 +1,14 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, effect, inject, signal } from '@angular/core';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { StatusBadge } from '../lib/public-api';
-import { CHANGE_GROUPS, ENGAGEMENTS, REVIEWERS } from './data/engagement-fixtures';
+import { Select, StatusBadge } from '../lib/public-api';
+import {
+  CHANGE_GROUPS,
+  ENGAGEMENTS,
+  REVIEWERS,
+  ReviewerOption,
+} from './data/engagement-fixtures';
 
 type WorkbenchTheme = 'light' | 'dark';
 
@@ -15,7 +20,7 @@ type WorkbenchTheme = 'light' | 'dark';
  */
 @Component({
   selector: 'app-root',
-  imports: [ReactiveFormsModule, StatusBadge],
+  imports: [FormsModule, ReactiveFormsModule, Select, StatusBadge],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
@@ -26,6 +31,21 @@ export class App {
 
   /** A form control for the reviewer filter, ready for a form-integrated control. */
   protected readonly reviewerId = new FormControl<string | null>(null);
+
+  protected readonly reviewerName = (reviewer: ReviewerOption) =>
+    `${reviewer.name} (${reviewer.role})`;
+  protected readonly reviewerKey = (reviewer: ReviewerOption) => reviewer.id;
+  protected readonly isUnavailable = (reviewer: ReviewerOption) => reviewer.unavailable === true;
+
+  /** Template-driven, plain strings, default accessors: a non-reviewer use. */
+  protected changeGroup: string | null = null;
+
+  /** A long list, to exercise scrolling and typeahead at scale. */
+  protected readonly manyOptions = Array.from(
+    { length: 500 },
+    (_, i) => `Account ${String(i + 1).padStart(4, '0')}`,
+  );
+  protected account: string | null = null;
 
   protected readonly theme = signal<WorkbenchTheme>('light');
 
@@ -38,5 +58,13 @@ export class App {
 
   protected toggleTheme(): void {
     this.theme.update((theme) => (theme === 'light' ? 'dark' : 'light'));
+  }
+
+  protected toggleReviewerDisabled(): void {
+    if (this.reviewerId.disabled) {
+      this.reviewerId.enable();
+    } else {
+      this.reviewerId.disable();
+    }
   }
 }

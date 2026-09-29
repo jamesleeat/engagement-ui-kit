@@ -1,0 +1,57 @@
+<!-- A <label> cannot target a non-labelable element, so the click is wired by hand. -->
+<span class="cw-select-label" [id]="labelId" (click)="focusTrigger()">{{ label() }}</span>
+
+<div
+  #trigger
+  class="cw-select-trigger"
+  role="combobox"
+  aria-haspopup="listbox"
+  [attr.tabindex]="disabled() ? -1 : 0"
+  [attr.aria-labelledby]="labelId"
+  [attr.aria-controls]="listboxId"
+  [attr.aria-expanded]="isOpen()"
+  [attr.aria-activedescendant]="activeDescendant()"
+  [attr.aria-disabled]="disabled() || null"
+  (click)="onTriggerClick()"
+  (keydown)="onKeydown($event)"
+  (blur)="onTriggerBlur()"
+>
+  <span class="cw-select-value" [class.cw-select-value--placeholder]="selectedLabel() === undefined">
+    {{ selectedLabel() ?? placeholder() }}
+  </span>
+  <span class="cw-select-chevron" aria-hidden="true"></span>
+</div>
+
+<!--
+  The mousedown is prevented so that clicking an option (or the scrollbar)
+  never moves focus off the trigger.
+-->
+<ul
+  #listbox
+  class="cw-select-listbox"
+  role="listbox"
+  [id]="listboxId"
+  [attr.aria-labelledby]="labelId"
+  [hidden]="!isOpen()"
+  (mousedown)="$event.preventDefault()"
+>
+  @for (item of items(); track $index) {
+    <li
+      class="cw-select-option"
+      role="option"
+      [id]="optionId($index)"
+      [attr.aria-selected]="$index === selectedIndex()"
+      [attr.aria-disabled]="item.disabled || null"
+      [class.cw-select-option--active]="$index === activeIndex()"
+      (click)="onOptionClick($index)"
+      (pointermove)="onOptionPointerMove($index)"
+    >
+      <span class="cw-select-check" aria-hidden="true">{{ $index === selectedIndex() ? '✓' : '' }}</span>
+      <span class="cw-select-option-label">{{ item.label }}</span>
+      @if (item.disabled) {
+        <!-- aria-disabled already tells assistive technology; this is for sighted users. -->
+        <span class="cw-select-option-hint" aria-hidden="true">{{ unavailableText() }}</span>
+      }
+    </li>
+  }
+</ul>

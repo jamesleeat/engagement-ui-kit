@@ -62,25 +62,64 @@
   <section class="wb-section">
     <h2>Review filters</h2>
     <p class="wb-note">
-      Where the reviewer picker belongs. The form control below is already here, so a
-      form-integrated component can be dropped straight in.
+      <code>cw-select</code> bound to a reactive <code>FormControl</code>. Unavailable reviewers
+      are listed but cannot be chosen.
     </p>
 
-    <div class="wb-placeholder">
-      <p>No reviewer picker yet.</p>
-      <p class="wb-note">
-        {{ reviewers.length }} reviewers and {{ changeGroups.length }} change groups are available
-        in <code>src/app/data/engagement-fixtures.ts</code>.
-      </p>
+    <cw-select
+      class="wb-reviewer"
+      label="Reviewer"
+      placeholder="Choose a reviewer"
+      [options]="reviewers"
+      [optionLabel]="reviewerName"
+      [optionValue]="reviewerKey"
+      [optionDisabled]="isUnavailable"
+      [formControl]="reviewerId"
+    />
+
+    <div class="wb-actions">
+      <button type="button" class="wb-button" (click)="toggleReviewerDisabled()">
+        {{ reviewerId.disabled ? 'Enable' : 'Disable' }} control
+      </button>
+      <button type="button" class="wb-button" (click)="reviewerId.reset()">Reset control</button>
+      <button type="button" class="wb-button" (click)="reviewerId.setValue('USR-105')">
+        Set to USR-105
+      </button>
     </div>
 
     <dl class="wb-state">
       <dt>value</dt>
       <dd>{{ reviewerId.value ?? '—' }}</dd>
+      <dt>disabled</dt>
+      <dd>{{ reviewerId.disabled }}</dd>
       <dt>touched</dt>
       <dd>{{ reviewerId.touched }}</dd>
       <dt>dirty</dt>
       <dd>{{ reviewerId.dirty }}</dd>
+    </dl>
+  </section>
+
+  <section class="wb-section">
+    <h2>Other uses of the same component</h2>
+    <p class="wb-note">
+      Template-driven <code>ngModel</code> over a plain string list, and a 500-option list.
+    </p>
+
+    <div class="wb-specimens">
+      <cw-select
+        label="Change group"
+        placeholder="Any change group"
+        [options]="changeGroups"
+        [(ngModel)]="changeGroup"
+      />
+      <cw-select label="Account" [options]="manyOptions" [(ngModel)]="account" />
+    </div>
+
+    <dl class="wb-state">
+      <dt>change group</dt>
+      <dd>{{ changeGroup ?? '—' }}</dd>
+      <dt>account</dt>
+      <dd>{{ account ?? '—' }}</dd>
     </dl>
   </section>
 </main>

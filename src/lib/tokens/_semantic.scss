@@ -40,7 +40,9 @@
 
   /* Overlays (popups, listboxes) */
   --cw-overlay-max-height: 18rem;
+  --cw-overlay-max-width: 32rem;
   --cw-overlay-offset: var(--cw-space-1);
+  --cw-layer-overlay: 100;
 
   /* Focus */
   --cw-focus-ring-width: 2px;

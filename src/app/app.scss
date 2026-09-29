@@ -33,7 +33,8 @@
   margin-block: var(--cw-space-1) 0;
 }
 
-.wb-theme-toggle {
+.wb-theme-toggle,
+.wb-button {
   background: var(--cw-color-bg-surface);
   border: 1px solid var(--cw-color-border-control);
   border-radius: var(--cw-radius-md);
@@ -43,7 +44,8 @@
   padding: var(--cw-space-1) var(--cw-space-3);
 }
 
-.wb-theme-toggle:focus-visible {
+.wb-theme-toggle:focus-visible,
+.wb-button:focus-visible {
   outline: 2px solid var(--cw-color-focus-ring);
   outline-offset: 2px;
 }
@@ -119,14 +121,16 @@
   white-space: nowrap;
 }
 
-.wb-placeholder {
-  border: 1px dashed var(--cw-color-border-control);
-  border-radius: var(--cw-radius-md);
-  padding: var(--cw-space-4);
+.wb-reviewer {
+  inline-size: 24rem;
+  max-inline-size: 100%;
 }
 
-.wb-placeholder p {
-  margin: 0;
+.wb-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--cw-space-2);
+  margin-block-start: var(--cw-space-4);
 }
 
 .wb-state {

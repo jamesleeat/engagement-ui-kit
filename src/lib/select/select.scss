@@ -1,0 +1,137 @@
+/* Consumes semantic tokens only. Theme changes arrive through them. */
+
+:host {
+  display: inline-flex;
+  flex-direction: column;
+  gap: var(--cw-control-label-gap);
+  min-inline-size: 16rem;
+  position: relative;
+}
+
+.cw-select-label {
+  color: var(--cw-color-text-default);
+  font-size: var(--cw-font-size-caption);
+  font-weight: var(--cw-font-weight-emphasis);
+}
+
+.cw-select-trigger {
+  align-items: center;
+  background: var(--cw-color-bg-surface);
+  border: 1px solid var(--cw-color-border-control);
+  border-radius: var(--cw-radius-control);
+  color: var(--cw-color-text-default);
+  cursor: pointer;
+  display: flex;
+  font-size: var(--cw-font-size-body);
+  gap: var(--cw-control-gap);
+  padding: var(--cw-control-padding-block) var(--cw-control-padding-inline);
+}
+
+.cw-select-trigger:hover {
+  border-color: var(--cw-color-border-control-hover);
+}
+
+.cw-select-trigger:focus-visible {
+  outline: var(--cw-focus-ring-width) solid var(--cw-color-focus-ring);
+  outline-offset: var(--cw-focus-ring-offset);
+}
+
+.cw-select-trigger[aria-disabled='true'] {
+  background: var(--cw-color-bg-subtle);
+  border-color: var(--cw-color-border-default);
+  color: var(--cw-color-text-disabled);
+  cursor: not-allowed;
+}
+
+.cw-select-value {
+  flex: 1 1 auto;
+  min-inline-size: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cw-select-value--placeholder {
+  color: var(--cw-color-text-muted);
+}
+
+.cw-select-chevron {
+  block-size: 0.5em;
+  border-block-end: 2px solid currentColor;
+  border-inline-end: 2px solid currentColor;
+  flex: 0 0 auto;
+  inline-size: 0.5em;
+  margin-block-start: -0.25em;
+  transform: rotate(45deg);
+}
+
+.cw-select-trigger[aria-expanded='true'] .cw-select-chevron {
+  margin-block-start: 0.25em;
+  transform: rotate(-135deg);
+}
+
+.cw-select-listbox {
+  background: var(--cw-color-bg-surface);
+  border: 1px solid var(--cw-color-border-control);
+  border-radius: var(--cw-radius-overlay);
+  box-shadow: var(--cw-shadow-overlay);
+  inset-block-start: calc(100% + var(--cw-overlay-offset));
+  inset-inline-start: 0;
+  list-style: none;
+  margin: 0;
+  inline-size: max-content;
+  max-block-size: var(--cw-overlay-max-height);
+  max-inline-size: var(--cw-overlay-max-width);
+  min-inline-size: 100%;
+  overflow-y: auto;
+  padding: var(--cw-space-1);
+  position: absolute;
+  z-index: var(--cw-layer-overlay);
+}
+
+.cw-select-listbox[hidden] {
+  display: none;
+}
+
+.cw-select-option {
+  align-items: baseline;
+  border-radius: var(--cw-radius-control);
+  color: var(--cw-color-text-default);
+  cursor: pointer;
+  display: flex;
+  font-size: var(--cw-font-size-body);
+  gap: var(--cw-control-gap);
+  padding: var(--cw-control-padding-block) var(--cw-control-padding-inline);
+}
+
+/* The outline, not only the background, marks the active option: forced-colours
+   mode strips backgrounds, and an outline also survives low-contrast screens. */
+.cw-select-option--active {
+  background: var(--cw-color-bg-active);
+  outline: var(--cw-focus-ring-width) solid var(--cw-color-focus-ring);
+  outline-offset: calc(-1 * var(--cw-focus-ring-width));
+}
+
+.cw-select-option[aria-selected='true'] {
+  font-weight: var(--cw-font-weight-emphasis);
+}
+
+.cw-select-option[aria-disabled='true'] {
+  color: var(--cw-color-text-disabled);
+  cursor: not-allowed;
+}
+
+.cw-select-check {
+  color: var(--cw-color-selected-indicator);
+  flex: 0 0 1em;
+  text-align: center;
+}
+
+.cw-select-option-label {
+  flex: 1 1 auto;
+}
+
+.cw-select-option-hint {
+  font-size: var(--cw-font-size-caption);
+  white-space: nowrap;
+}
