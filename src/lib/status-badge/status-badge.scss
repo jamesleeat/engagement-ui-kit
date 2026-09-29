@@ -1,0 +1,56 @@
+:host {
+  display: inline-block;
+}
+
+.badge {
+  align-items: center;
+  background: #f6f8fa;
+  border: 1px solid #d8dee6;
+  border-radius: 10px;
+  color: #9aa5b1;
+  display: inline-flex;
+  font-family:
+    system-ui,
+    -apple-system,
+    'Segoe UI',
+    Roboto,
+    Arial,
+    sans-serif;
+  font-size: 12px;
+  gap: 6px;
+  padding: 2px 8px;
+}
+
+.dot {
+  background: #9aa5b1;
+  border-radius: 50%;
+  flex: 0 0 auto;
+  height: 8px;
+  width: 8px;
+}
+
+.badge-ready .dot {
+  background: #1a7f37;
+}
+
+.badge-processing .dot {
+  background: #bf8700;
+}
+
+.badge-error .dot {
+  background: #cf222e;
+}
+
+.badge-sm {
+  font-size: 11px !important;
+  padding: 1px 6px !important;
+}
+
+.badge-lg {
+  font-size: 14px !important;
+  padding: 4px 12px !important;
+}
+
+::ng-deep .engagement-row .badge {
+  margin-left: 4px;
+}

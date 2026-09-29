@@ -1,0 +1,92 @@
+/**
+ * Primitive tokens: the raw values the kit is built from.
+ *
+ * These are deliberately unopinionated. A primitive says what a value *is*
+ * (`--cw-blue-600`), never what it is *for*. No component in the kit should
+ * consume a primitive directly; kit components consume the semantic layer.
+ *
+ * This file is supplied. You are not expected to change it, though you may add
+ * primitives if something you need is genuinely missing.
+ */
+
+:root {
+  /* Neutrals */
+  --cw-gray-0: #ffffff;
+  --cw-gray-50: #f6f8fa;
+  --cw-gray-100: #eaeef2;
+  --cw-gray-200: #d8dee6;
+  --cw-gray-300: #bcc6d1;
+  --cw-gray-400: #9aa5b1;
+  --cw-gray-500: #6e7a87;
+  --cw-gray-600: #55606c;
+  --cw-gray-700: #3d4752;
+  --cw-gray-800: #2a323b;
+  --cw-gray-900: #1b1f24;
+
+  /* Blue */
+  --cw-blue-50: #eef5fc;
+  --cw-blue-100: #d3e5f7;
+  --cw-blue-200: #a7c9ee;
+  --cw-blue-400: #4a89c8;
+  --cw-blue-600: #1f5f9c;
+  --cw-blue-700: #184b7c;
+  --cw-blue-800: #123a60;
+
+  /* Green */
+  --cw-green-50: #e8f5ec;
+  --cw-green-100: #c8e6d2;
+  --cw-green-600: #1a7f37;
+  --cw-green-700: #14622a;
+  --cw-green-800: #0f4a20;
+
+  /* Amber */
+  --cw-amber-50: #fdf4e3;
+  --cw-amber-100: #f8e4b8;
+  --cw-amber-600: #bf8700;
+  --cw-amber-700: #966a00;
+  --cw-amber-800: #6f4e00;
+
+  /* Red */
+  --cw-red-50: #fdeeef;
+  --cw-red-100: #f8ced2;
+  --cw-red-600: #cf222e;
+  --cw-red-700: #a51823;
+  --cw-red-800: #7c121b;
+
+  /* Spacing */
+  --cw-space-0: 0;
+  --cw-space-1: 0.25rem;
+  --cw-space-2: 0.5rem;
+  --cw-space-3: 0.75rem;
+  --cw-space-4: 1rem;
+  --cw-space-5: 1.5rem;
+  --cw-space-6: 2rem;
+  --cw-space-7: 3rem;
+
+  /* Radii */
+  --cw-radius-sm: 4px;
+  --cw-radius-md: 6px;
+  --cw-radius-lg: 10px;
+  --cw-radius-pill: 999px;
+
+  /* Typography */
+  --cw-font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --cw-font-size-xs: 0.6875rem;
+  --cw-font-size-sm: 0.8125rem;
+  --cw-font-size-md: 0.9375rem;
+  --cw-font-size-lg: 1.125rem;
+  --cw-font-size-xl: 1.375rem;
+  --cw-line-height-tight: 1.25;
+  --cw-line-height-normal: 1.5;
+  --cw-font-weight-regular: 400;
+  --cw-font-weight-medium: 500;
+  --cw-font-weight-semibold: 600;
+
+  /* Elevation */
+  --cw-shadow-sm: 0 1px 2px rgb(27 31 36 / 8%);
+  --cw-shadow-md: 0 4px 12px rgb(27 31 36 / 12%);
+
+  /* Motion */
+  --cw-duration-fast: 120ms;
+  --cw-easing-standard: cubic-bezier(0.2, 0, 0.2, 1);
+}

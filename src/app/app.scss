@@ -1,0 +1,120 @@
+/* Workbench layout only. The workbench is a consumer, not part of the kit. */
+
+.wb-header,
+.wb-main {
+  margin-inline: auto;
+  max-width: 60rem;
+  padding-inline: var(--cw-space-5);
+}
+
+.wb-header {
+  border-bottom: 1px solid var(--cw-gray-200);
+  padding-block: var(--cw-space-5);
+}
+
+.wb-header h1 {
+  font-size: var(--cw-font-size-xl);
+  margin: 0;
+}
+
+.wb-lede {
+  color: var(--cw-gray-600);
+  margin-block: var(--cw-space-1) 0;
+}
+
+.wb-main {
+  padding-block: var(--cw-space-5) var(--cw-space-7);
+}
+
+.wb-section {
+  border-top: 1px solid var(--cw-gray-100);
+  padding-block: var(--cw-space-5);
+}
+
+.wb-section:first-child {
+  border-top: 0;
+}
+
+.wb-section h2 {
+  font-size: var(--cw-font-size-lg);
+  margin: 0;
+}
+
+.wb-note {
+  color: var(--cw-gray-600);
+  font-size: var(--cw-font-size-sm);
+}
+
+.wb-specimens {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--cw-space-3);
+}
+
+.engagement-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cw-space-2);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.engagement-row {
+  align-items: center;
+  border: 1px solid var(--cw-gray-200);
+  border-radius: var(--cw-radius-md);
+  display: flex;
+  gap: var(--cw-space-3);
+  padding: var(--cw-space-3);
+}
+
+.engagement-identity {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.engagement-name {
+  font-weight: var(--cw-font-weight-medium);
+}
+
+.engagement-client {
+  color: var(--cw-gray-600);
+  font-size: var(--cw-font-size-sm);
+}
+
+.engagement-pending {
+  color: var(--cw-gray-600);
+  font-size: var(--cw-font-size-sm);
+  white-space: nowrap;
+}
+
+.wb-placeholder {
+  border: 1px dashed var(--cw-gray-300);
+  border-radius: var(--cw-radius-md);
+  padding: var(--cw-space-4);
+}
+
+.wb-placeholder p {
+  margin: 0;
+}
+
+.wb-state {
+  display: grid;
+  gap: var(--cw-space-1) var(--cw-space-3);
+  grid-template-columns: auto 1fr;
+  margin-block: var(--cw-space-4) 0;
+}
+
+.wb-state dt {
+  color: var(--cw-gray-600);
+  font-size: var(--cw-font-size-sm);
+}
+
+.wb-state dd {
+  font-size: var(--cw-font-size-sm);
+  margin: 0;
+}

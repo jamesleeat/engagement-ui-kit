@@ -1,0 +1,47 @@
+/**
+ * Global styles.
+ *
+ * The kit's tokens are loaded here, once, for the whole document. Beyond that
+ * this file carries only a small reset and readable element defaults — the
+ * styling architecture above it is yours to design.
+ */
+
+@use './lib/tokens/tokens';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  color: var(--cw-gray-900);
+  font-family: var(--cw-font-sans);
+  line-height: var(--cw-line-height-normal);
+  margin: 0;
+}
+
+h1,
+h2,
+h3 {
+  line-height: var(--cw-line-height-tight);
+  margin-block: 0 var(--cw-space-2);
+}
+
+p {
+  margin-block: 0 var(--cw-space-3);
+}
+
+code {
+  background: var(--cw-gray-50);
+  border-radius: var(--cw-radius-sm);
+  font-size: 0.875em;
+  padding: 0.1em 0.3em;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}

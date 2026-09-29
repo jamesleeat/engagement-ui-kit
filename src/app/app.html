@@ -1,0 +1,75 @@
+<header class="wb-header">
+  <h1>Engagement UI kit — workbench</h1>
+  <p class="wb-lede">
+    A consumer of the kit in <code>src/lib</code>. Build, demonstrate and review components here.
+  </p>
+</header>
+
+<main class="wb-main">
+  <section class="wb-section">
+    <h2>Status badge</h2>
+    <p class="wb-note">The supplied component, in the states the engagement list needs.</p>
+
+    <div class="wb-specimens">
+      <cw-status-badge label="Ready" [isReady]="true"></cw-status-badge>
+      <cw-status-badge
+        label="Processing"
+        [isProcessing]="true"
+        tooltip="The server is still preparing this engagement"
+      ></cw-status-badge>
+      <cw-status-badge label="Error" [isError]="true"></cw-status-badge>
+      <cw-status-badge label="Ready" [isReady]="true" [isSmall]="true"></cw-status-badge>
+      <cw-status-badge label="Ready" [isReady]="true" [isLarge]="true"></cw-status-badge>
+    </div>
+  </section>
+
+  <section class="wb-section">
+    <h2>Engagement list</h2>
+    <p class="wb-note">The kit in use: a list that has to communicate each engagement's state.</p>
+
+    <ul class="engagement-list">
+      @for (engagement of engagements; track engagement.id) {
+        <li class="engagement-row">
+          <span class="engagement-identity">
+            <span class="engagement-name">{{ engagement.name }}</span>
+            <span class="engagement-client">{{ engagement.clientName }}</span>
+          </span>
+
+          <span class="engagement-pending"> {{ engagement.pendingChangeCount }} pending </span>
+
+          <cw-status-badge
+            [label]="engagement.status"
+            [isReady]="engagement.status === 'READY'"
+            [isProcessing]="engagement.status === 'PROCESSING'"
+            [isError]="engagement.status === 'ERROR'"
+          ></cw-status-badge>
+        </li>
+      }
+    </ul>
+  </section>
+
+  <section class="wb-section">
+    <h2>Review filters</h2>
+    <p class="wb-note">
+      Where the reviewer picker belongs. The form control below is already here, so a
+      form-integrated component can be dropped straight in.
+    </p>
+
+    <div class="wb-placeholder">
+      <p>No reviewer picker yet.</p>
+      <p class="wb-note">
+        {{ reviewers.length }} reviewers and {{ changeGroups.length }} change groups are available
+        in <code>src/app/data/engagement-fixtures.ts</code>.
+      </p>
+    </div>
+
+    <dl class="wb-state">
+      <dt>value</dt>
+      <dd>{{ reviewerId.value ?? '—' }}</dd>
+      <dt>touched</dt>
+      <dd>{{ reviewerId.touched }}</dd>
+      <dt>dirty</dt>
+      <dd>{{ reviewerId.dirty }}</dd>
+    </dl>
+  </section>
+</main>

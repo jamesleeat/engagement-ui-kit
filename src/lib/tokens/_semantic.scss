@@ -1,0 +1,10 @@
+/**
+ * Semantic tokens: what the primitives are *for*.
+ *
+ * This layer is yours. It is the seam between the raw palette in
+ * `_primitives.scss` and the components that consume it, and it is what makes
+ * a second theme possible without touching component styles.
+ *
+ * Nothing here is prescribed: the roles you define, how you name them, and how
+ * a theme overrides them are part of what the exercise is asking you to design.
+ */
