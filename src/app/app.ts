@@ -2,15 +2,27 @@ import { DOCUMENT } from '@angular/common';
 import { Component, effect, inject, signal } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { Select, StatusBadge } from '../lib/public-api';
+import { Select, StatusBadge, StatusBadgeTone } from '../lib/public-api';
 import {
   CHANGE_GROUPS,
   ENGAGEMENTS,
+  EngagementStatus,
   REVIEWERS,
   ReviewerOption,
 } from './data/engagement-fixtures';
 
 type WorkbenchTheme = 'light' | 'dark';
+
+/**
+ * How this product presents engagement states. Domain knowledge lives here,
+ * not in the kit; a `Record` makes a new state a compile error until mapped.
+ */
+const ENGAGEMENT_STATUS_BADGE: Record<EngagementStatus, { tone: StatusBadgeTone; label: string }> =
+  {
+    READY: { tone: 'success', label: 'Ready' },
+    PROCESSING: { tone: 'warning', label: 'Processing' },
+    ERROR: { tone: 'danger', label: 'Error' },
+  };
 
 /**
  * The workbench: a consumer of the kit in `src/lib`.
@@ -28,6 +40,7 @@ export class App {
   protected readonly engagements = ENGAGEMENTS;
   protected readonly reviewers = REVIEWERS;
   protected readonly changeGroups = CHANGE_GROUPS;
+  protected readonly statusBadge = ENGAGEMENT_STATUS_BADGE;
 
   /** A form control for the reviewer filter, ready for a form-integrated control. */
   protected readonly reviewerId = new FormControl<string | null>(null);

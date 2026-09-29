@@ -1,56 +1,59 @@
+/*
+ * Consumes semantic tokens only. Each tone points the badge's private
+ * custom properties at one status set; the rules below never mention a tone.
+ * Spacing around the badge belongs to whoever lays it out, not to the badge.
+ */
+
 :host {
-  display: inline-block;
-}
+  --_bg: var(--cw-color-status-neutral-bg);
+  --_fg: var(--cw-color-status-neutral-fg);
+  --_border: var(--cw-color-status-neutral-border);
 
-.badge {
   align-items: center;
-  background: #f6f8fa;
-  border: 1px solid #d8dee6;
-  border-radius: 10px;
-  color: #9aa5b1;
+  background: var(--_bg);
+  border: 1px solid var(--_border);
+  border-radius: var(--cw-radius-badge);
+  color: var(--_fg);
   display: inline-flex;
-  font-family:
-    system-ui,
-    -apple-system,
-    'Segoe UI',
-    Roboto,
-    Arial,
-    sans-serif;
-  font-size: 12px;
-  gap: 6px;
-  padding: 2px 8px;
+  font-family: var(--cw-font-family-base);
+  font-size: var(--cw-font-size-caption);
+  gap: 0.4em;
+  line-height: var(--cw-line-height-tight);
+  padding: 0.15em 0.65em;
+  white-space: nowrap;
 }
 
-.dot {
-  background: #9aa5b1;
+:host([data-tone='success']) {
+  --_bg: var(--cw-color-status-success-bg);
+  --_fg: var(--cw-color-status-success-fg);
+  --_border: var(--cw-color-status-success-border);
+}
+
+:host([data-tone='warning']) {
+  --_bg: var(--cw-color-status-warning-bg);
+  --_fg: var(--cw-color-status-warning-fg);
+  --_border: var(--cw-color-status-warning-border);
+}
+
+:host([data-tone='danger']) {
+  --_bg: var(--cw-color-status-danger-bg);
+  --_fg: var(--cw-color-status-danger-fg);
+  --_border: var(--cw-color-status-danger-border);
+}
+
+/* Sizes scale everything from font size, so padding and dot follow. */
+:host([data-size='sm']) {
+  font-size: var(--cw-font-size-dense);
+}
+
+:host([data-size='lg']) {
+  font-size: var(--cw-font-size-body);
+}
+
+.cw-status-badge-dot {
+  background: var(--_border);
+  block-size: 0.6em;
   border-radius: 50%;
   flex: 0 0 auto;
-  height: 8px;
-  width: 8px;
-}
-
-.badge-ready .dot {
-  background: #1a7f37;
-}
-
-.badge-processing .dot {
-  background: #bf8700;
-}
-
-.badge-error .dot {
-  background: #cf222e;
-}
-
-.badge-sm {
-  font-size: 11px !important;
-  padding: 1px 6px !important;
-}
-
-.badge-lg {
-  font-size: 14px !important;
-  padding: 4px 12px !important;
-}
-
-::ng-deep .engagement-row .badge {
-  margin-left: 4px;
+  inline-size: 0.6em;
 }

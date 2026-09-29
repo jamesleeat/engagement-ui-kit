@@ -22,6 +22,10 @@ Where AI output was corrected or verified:
 - **Index typing.** `items()[selectedIndex()]` is typed as always defined, but the index can be
   `-1`. The Angular extended diagnostic (NG8102) caught it via a now-meaningful `??`; the
   `undefined` case is now explicit in the type.
+- **Primitive leaks.** After the badge rework I grepped every kit stylesheet for primitive
+  tokens. It found two slips in AI-drafted styles: the badge's small size used
+  `--cw-font-size-xs` and the select's listbox used `--cw-space-1`. Both now go through
+  semantic tokens. This check is cheap and should be automated (see ADOPTION.md).
 - **Keyboard behaviour was verified in a real browser**, not only in unit tests: opening,
   arrows, Home/End, typeahead (including multi-character and space), Escape leaving the value
   unchanged, Enter on an unavailable option doing nothing, Tab marking the control touched,

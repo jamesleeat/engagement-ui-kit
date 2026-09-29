@@ -7,3 +7,4 @@
 
 export { Select } from './select/select';
 export { StatusBadge } from './status-badge/status-badge';
+export type { StatusBadgeSize, StatusBadgeTone } from './status-badge/status-badge';

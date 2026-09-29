@@ -84,7 +84,7 @@
   max-inline-size: var(--cw-overlay-max-width);
   min-inline-size: 100%;
   overflow-y: auto;
-  padding: var(--cw-space-1);
+  padding: var(--cw-overlay-padding);
   position: absolute;
   z-index: var(--cw-layer-overlay);
 }

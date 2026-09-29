@@ -24,6 +24,7 @@
   --cw-font-family-base: var(--cw-font-sans);
   --cw-font-size-body: var(--cw-font-size-md);
   --cw-font-size-caption: var(--cw-font-size-sm);
+  --cw-font-size-dense: var(--cw-font-size-xs); /* compact variants only */
   --cw-line-height-body: var(--cw-line-height-normal);
   --cw-font-weight-emphasis: var(--cw-font-weight-semibold);
 
@@ -42,6 +43,7 @@
   --cw-overlay-max-height: 18rem;
   --cw-overlay-max-width: 32rem;
   --cw-overlay-offset: var(--cw-space-1);
+  --cw-overlay-padding: var(--cw-space-1);
   --cw-layer-overlay: 100;
 
   /* Focus */
@@ -78,6 +80,9 @@
   --cw-color-selected-indicator: var(--cw-blue-600);
 
   /* Status: one set per meaning, not per colour */
+  --cw-color-status-neutral-bg: var(--cw-gray-50);
+  --cw-color-status-neutral-fg: var(--cw-gray-800);
+  --cw-color-status-neutral-border: var(--cw-gray-500);
   --cw-color-status-success-bg: var(--cw-green-50);
   --cw-color-status-success-fg: var(--cw-green-800);
   --cw-color-status-success-border: var(--cw-green-600);
