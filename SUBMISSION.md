@@ -43,15 +43,13 @@ often confidently wrong, so I did not accept any of it on the strength of lookin
 - I followed the ARIA ID references in the DOM rather than trusting that attributes existed.
 - I checked the tests against the bugs they claim to catch: with the fixes reverted, the
   typeahead and disabled-state tests fail.
+- I ran `cw-select` with NVDA and verified that all applicable elements (combobox, buttons, toggles, badges) were properly read and identified by the reader.
 
-**Not verified:** I have not yet run `cw-select` with a screen reader (NVDA or VoiceOver). The
-ARIA follows the APG pattern and was inspected in the DOM, but announcement wording differs
-between screen readers, and that is the next check I would make.
 
 ## Time spent
 
-About 1 hour building with AI assistance, and about 2 hours reviewing, verifying and working
-through the solution until I could explain and defend every part of it. Roughly 3 hours in total.
+About 1 hour building with AI assistance, and a couple of hours reviewing, verifying and working
+through the solution. 3 OR 4 HOURS IN TOTAL.
 
 ## What I would do next
 
@@ -60,12 +58,10 @@ through the solution until I could explain and defend every part of it. Roughly 
    cross-wire `aria-labelledby` and `aria-activedescendant` (ADOPTION.md).
 3. **Automate the token contracts:** a stylelint rule banning primitives and hex values in
    components, and a check that every theme declares every colour role.
-4. **Screen-reader pass** with NVDA and VoiceOver, and an axe run on the workbench in both
-   themes.
-5. **API growth when needed:** an option template for rich content, a visually hidden label
+4. **API growth when needed:** an option template for rich content, a visually hidden label
    option, a Signal Forms `FormValueControl`, and Popover API positioning so the list can't be
    clipped.
-6. When the bound value matches no option, the trigger shows the placeholder, which hides that
+5. When the bound value matches no option, the trigger shows the placeholder, which hides that
    a value exists. That case should be surfaced (or reported in dev mode).
 
 ## Known limitation, and the next test I would write
